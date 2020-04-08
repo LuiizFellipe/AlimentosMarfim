@@ -32,7 +32,7 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4>Use another service to register.</h4>
+            <h4>Utilize outro serviço de login.</h4>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
@@ -51,7 +51,16 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    <div class="col s12 m6 offset-m3 center-align">
+                                        <button type="submit" class="oauth-container btn darken-4 white black-text" name="provider" value="@provider.Name" style="text-transform:none">
+                                            <div class="left">
+                                                <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in"
+                                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                            </div>
+                                            Login with Google
+                                        </button>
+                                    </div>
+                                    //<button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                                 }
                             </p>
                         </div>
