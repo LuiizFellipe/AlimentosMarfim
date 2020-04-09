@@ -8,6 +8,14 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.cs" />
     <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs" />
+    <Compile Remove="Migrations\20200409131851_MigrationFuncionario.cs" />
+    <Compile Remove="Migrations\20200409131851_MigrationFuncionario.Designer.cs" />
+    <Compile Remove="Migrations\20200409134504_MigrationFuncionario.cs" />
+    <Compile Remove="Migrations\20200409134504_MigrationFuncionario.Designer.cs" />
+    <Compile Remove="Migrations\20200409134838_MigrationFuncionario.cs" />
+    <Compile Remove="Migrations\20200409134838_MigrationFuncionario.Designer.cs" />
+    <Compile Remove="Migrations\20200409143318_MigrationCliente.cs" />
+    <Compile Remove="Migrations\20200409143318_MigrationCliente.Designer.cs" />
   </ItemGroup>
 
 
@@ -16,6 +24,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />

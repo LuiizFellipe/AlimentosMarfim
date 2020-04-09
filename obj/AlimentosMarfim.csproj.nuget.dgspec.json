@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andri\\Desktop\\esse\\AlimentosMarfim\\AlimentosMarfim.csproj": {}
+    "C:\\Users\\andre\\Documents\\ProgramasUniBrasil\\3SM-ES\\ProjetoDefinitivo\\AlimentosMarfim\\AlimentosMarfim.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andri\\Desktop\\esse\\AlimentosMarfim\\AlimentosMarfim.csproj": {
+    "C:\\Users\\andre\\Documents\\ProgramasUniBrasil\\3SM-ES\\ProjetoDefinitivo\\AlimentosMarfim\\AlimentosMarfim.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andri\\Desktop\\esse\\AlimentosMarfim\\AlimentosMarfim.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\Documents\\ProgramasUniBrasil\\3SM-ES\\ProjetoDefinitivo\\AlimentosMarfim\\AlimentosMarfim.csproj",
         "projectName": "AlimentosMarfim",
-        "projectPath": "C:\\Users\\Andri\\Desktop\\esse\\AlimentosMarfim\\AlimentosMarfim.csproj",
-        "packagesPath": "C:\\Users\\Andri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andri\\Desktop\\esse\\AlimentosMarfim\\obj\\",
+        "projectPath": "C:\\Users\\andre\\Documents\\ProgramasUniBrasil\\3SM-ES\\ProjetoDefinitivo\\AlimentosMarfim\\AlimentosMarfim.csproj",
+        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\andre\\Documents\\ProgramasUniBrasil\\3SM-ES\\ProjetoDefinitivo\\AlimentosMarfim\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Andri\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -58,6 +63,10 @@
               "target": "Package",
               "version": "[3.1.2, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[3.1.2, )"
@@ -89,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

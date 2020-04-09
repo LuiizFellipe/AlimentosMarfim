@@ -16,6 +16,6 @@ namespace AlimentosMarfim.Models
         [Required (ErrorMessage = "Esse campo é obrigatório")]
         public string NomeCargo { get; set; }
 
-        
+        public List<Funcionario> Funcionario { get; set; }
     }
 }

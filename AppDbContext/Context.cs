@@ -13,6 +13,11 @@ namespace AlimentosMarfim.AppDbContext
         public DbSet<Setor> Setores { get; set; }
         public DbSet<Turno> Turnos { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
