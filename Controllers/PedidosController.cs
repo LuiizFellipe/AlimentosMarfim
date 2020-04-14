@@ -63,16 +63,20 @@ namespace AlimentosMarfim.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,DataCompra,ClienteId,FuncionarioId,ProdutoId")] Pedido pedido)
         {
-            if (ModelState.IsValid)
+            try
             {
                 _context.Add(pedido);
                 await _context.SaveChangesAsync();
+                ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", pedido.ClienteId);
+                ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "NomeFuncionario", pedido.FuncionarioId);
+                ViewData["ProdutoId"] = new SelectList(_context.Produtos, "Id", "NomeProduto", pedido.ProdutoId);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", pedido.ClienteId);
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "NomeFuncionario", pedido.FuncionarioId);
-            ViewData["ProdutoId"] = new SelectList(_context.Produtos, "Id", "NomeProduto", pedido.ProdutoId);
-            return View(pedido);
+            catch (Exception)
+            {
+                return View(pedido);
+                throw;
+            }
         }
 
         // GET: Pedidos/Edit/5
@@ -106,30 +110,30 @@ namespace AlimentosMarfim.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(pedido);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PedidoExists(pedido.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _context.Update(pedido);
+                await _context.SaveChangesAsync();
+
+                ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", pedido.ClienteId);
+                ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "NomeFuncionario", pedido.FuncionarioId);
+                ViewData["ProdutoId"] = new SelectList(_context.Produtos, "Id", "NomeProduto", pedido.ProdutoId);
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", pedido.ClienteId);
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "NomeFuncionario", pedido.FuncionarioId);
-            ViewData["ProdutoId"] = new SelectList(_context.Produtos, "Id", "NomeProduto", pedido.ProdutoId);
-            return View(pedido);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PedidoExists(pedido.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+
+                    return View(pedido);
+                    throw;
+                }
+            }
         }
 
         // GET: Pedidos/Delete/5

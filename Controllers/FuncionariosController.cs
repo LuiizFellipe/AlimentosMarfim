@@ -63,16 +63,25 @@ namespace AlimentosMarfim.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,NomeFuncionario,PIS,Telefone,Salario,CargoId,SetorId,TurnoId")] Funcionario funcionario)
         {
-            if (ModelState.IsValid)
+            try
             {
+
                 _context.Add(funcionario);
                 await _context.SaveChangesAsync();
+
+                ViewData["CargoId"] = new SelectList(_context.Cargos, "Id", "NomeCargo", funcionario.CargoId);
+                ViewData["SetorId"] = new SelectList(_context.Setores, "Id", "NomeSetor", funcionario.SetorId);
+                ViewData["TurnoId"] = new SelectList(_context.Turnos, "Id", "NomeTurno", funcionario.TurnoId);
+
                 return RedirectToAction(nameof(Index));
+
+
             }
-            ViewData["CargoId"] = new SelectList(_context.Cargos, "Id", "NomeCargo", funcionario.CargoId);
-            ViewData["SetorId"] = new SelectList(_context.Setores, "Id", "NomeSetor", funcionario.SetorId);
-            ViewData["TurnoId"] = new SelectList(_context.Turnos, "Id", "NomeTurno", funcionario.TurnoId);
-            return View(funcionario);
+            catch (Exception)
+            {
+                return View(funcionario);
+                throw;
+            }
         }
 
         // GET: Funcionarios/Edit/5
@@ -106,30 +115,28 @@ namespace AlimentosMarfim.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(funcionario);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!FuncionarioExists(funcionario.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(funcionario);
+                await _context.SaveChangesAsync();
+
+                ViewData["CargoId"] = new SelectList(_context.Cargos, "Id", "NomeCargo", funcionario.CargoId);
+                ViewData["SetorId"] = new SelectList(_context.Setores, "Id", "NomeSetor", funcionario.SetorId);
+                ViewData["TurnoId"] = new SelectList(_context.Turnos, "Id", "NomeTurno", funcionario.TurnoId);
             }
-            ViewData["CargoId"] = new SelectList(_context.Cargos, "Id", "NomeCargo", funcionario.CargoId);
-            ViewData["SetorId"] = new SelectList(_context.Setores, "Id", "NomeSetor", funcionario.SetorId);
-            ViewData["TurnoId"] = new SelectList(_context.Turnos, "Id", "NomeTurno", funcionario.TurnoId);
-            return View(funcionario);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FuncionarioExists(funcionario.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return View(funcionario);
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Funcionarios/Delete/5
