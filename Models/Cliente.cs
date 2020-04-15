@@ -41,6 +41,7 @@ namespace AlimentosMarfim.Models
         [Required(ErrorMessage = "UF é obrigatório")]
         public string Uf { get; set; }
 
+        // ligação com a model de pedido
         public List<Pedido> Pedidos { get; set; }
     }
 }

@@ -16,6 +16,8 @@ namespace AlimentosMarfim.Models
         [Required (ErrorMessage = "Esse campo é obrigatório")]
         public string NomeCargo { get; set; }
 
+
+        // ligação com a model de funcionário
         public List<Funcionario> Funcionario { get; set; }
     }
 }
