@@ -1,10 +1,14 @@
 ﻿@model IEnumerable<AlimentosMarfim.Models.Cargo>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cargos";
 }
-
-<h1>Index</h1>
+@if (SignInManager.IsSignedIn(User))
+{
+<h1>Cargos</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -33,3 +37,11 @@
 }
     </tbody>
 </table>
+}
+else
+{
+    <div class="text-center">
+    <h1 class="display-4">Faça login para continuar...</h1>
+        </div>
+}
+

@@ -1,9 +1,13 @@
 ﻿@model IEnumerable<AlimentosMarfim.Models.Setor>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Index";
 }
-
+@if (SignInManager.IsSignedIn(User))
+{
 <h1>Index</h1>
 
 <p>
@@ -33,3 +37,10 @@
 }
     </tbody>
 </table>
+}
+else
+{
+    <div class="text-center">
+    <h1 class="display-4">Faça login para continuar...</h1>
+        </div>
+}

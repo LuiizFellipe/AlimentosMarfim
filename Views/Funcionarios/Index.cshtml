@@ -1,12 +1,17 @@
 ﻿@model IEnumerable<AlimentosMarfim.Models.Funcionario>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
+@if (SignInManager.IsSignedIn(User))
+{
 <p>
+    <h1>Funcionarios</h1>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
@@ -69,3 +74,11 @@
 }
     </tbody>
 </table>
+}
+else
+{
+    <div class="text-center">
+    <h1 class="display-4">Faça login para continuar...</h1>
+        </div>
+}
+
