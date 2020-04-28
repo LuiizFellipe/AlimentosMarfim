@@ -21,7 +21,7 @@ namespace AlimentosMarfim.Models
         public string Quantidade { get; set; }
 
         [Display(Name = "Valor Unitário")]
-        public double ValorUnitario { get; set; }
+        public decimal ValorUnitario { get; set; }
 
         // ligação com a model de pedido
         public List<Pedido> Pedidos { get; set; }

@@ -23,7 +23,7 @@ namespace AlimentosMarfim.AppDbContext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // usando banco MySql na nuvem, parâmetro : é passado a string de conexão com banco
-            optionsBuilder.UseMySql(connectionString: @"server=192.99.253.245;port=3306;database=DbAlimentos;uid=root;password=;");
+            optionsBuilder.UseMySql(connectionString: @"server=192.99.253.245;port=3306;database=DbAlimentos;uid=time;password=unibrasil2019;");
 
         }
     }

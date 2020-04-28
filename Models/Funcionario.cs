@@ -28,7 +28,7 @@ namespace AlimentosMarfim.Models
 
         [Required(ErrorMessage = "Salário é obrigatório")]
         [Display(Name = "Salário")]
-        public double Salario { get; set; }
+        public decimal Salario { get; set; }
 
         // chave estrangeira da model cargo
         [ForeignKey("CargoId")]
