@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AlimentosMarfim.AppDbContext;
 using AlimentosMarfim.Models;
+using System.IO;
+using PdfSharpCore.Drawing;
 
 namespace AlimentosMarfim.Controllers
 {
@@ -172,5 +174,105 @@ namespace AlimentosMarfim.Controllers
         {
             return _context.Pedidos.Any(e => e.Id == id);
         }
+
+
+        public FileResult GerarRelatorio()
+        {
+            using (var doc = new PdfSharpCore.Pdf.PdfDocument())
+            {
+                // <== CONFIGURAÇÕES DO PDF:
+                var page = doc.AddPage();
+                page.Size = PdfSharpCore.PageSize.A4;
+                page.Orientation = PdfSharpCore.PageOrientation.Portrait;
+                var graphics = PdfSharpCore.Drawing.XGraphics.FromPdfPage(page);
+                var corFonte = PdfSharpCore.Drawing.XBrushes.Black;
+
+                var textFormatter = new PdfSharpCore.Drawing.Layout.XTextFormatter(graphics);
+                var fonteOrganizacao = new PdfSharpCore.Drawing.XFont("Arial", 10);
+                var fonteDescricao = new PdfSharpCore.Drawing.XFont("Arial", 8, PdfSharpCore.Drawing.XFontStyle.BoldItalic);
+                var titulodetalhes = new PdfSharpCore.Drawing.XFont("Arial", 14, PdfSharpCore.Drawing.XFontStyle.Bold);
+                var fonteDetalhesDescricao = new PdfSharpCore.Drawing.XFont("Arial", 7);
+                // <== CONFIGURAÇÕES ATÉ AQUI.
+
+
+
+                // <== DADOS DO PDF:
+
+                //Logo:
+                 var logo = @"C:\Users\andre\Pictures\logo.png";
+
+                 XImage image = XImage.FromFile(logo);
+                 graphics.DrawImage(image, 20 , 5 , 80 , 80);
+
+
+                //Título:
+                var tituloDetalhes = new PdfSharpCore.Drawing.Layout.XTextFormatter(graphics);
+                tituloDetalhes.Alignment = PdfSharpCore.Drawing.Layout.XParagraphAlignment.Center;
+                tituloDetalhes.DrawString("Marfim Pedidos", titulodetalhes, corFonte, new PdfSharpCore.Drawing.XRect(0, 40, page.Width, page.Height));
+
+                //Colunas:
+                var alturaTituloDetalhesY = 140;
+                var detalhes = new PdfSharpCore.Drawing.Layout.XTextFormatter(graphics);
+
+                detalhes.DrawString("Data da Compra", fonteDescricao, corFonte, new PdfSharpCore.Drawing.XRect(80, alturaTituloDetalhesY, page.Width, page.Height));
+                detalhes.DrawString("Cliente", fonteDescricao, corFonte, new PdfSharpCore.Drawing.XRect(220, alturaTituloDetalhesY, page.Width, page.Height));
+                detalhes.DrawString("Vendedor", fonteDescricao, corFonte, new PdfSharpCore.Drawing.XRect(300, alturaTituloDetalhesY, page.Width, page.Height));
+                detalhes.DrawString("Produto Vendido", fonteDescricao, corFonte, new PdfSharpCore.Drawing.XRect(380, alturaTituloDetalhesY, page.Width, page.Height));
+
+                // <== PRINCIPAL
+
+                var context = _context.Pedidos.Include(p => p.Cliente).Include(p => p.Funcionario).Include(p => p.Produtos);
+                var pedidos = _context.Pedidos.ToArray();
+
+                // LIGAÇÃO COM O BANCO DE DADOS
+                var q = _context.Pedidos.AsQueryable();
+             
+
+                //SELECIONADO PRODUTOS
+                var data = q.Select(p => p.DataCompra).ToArray();
+                var cliente = q.Select(p => p.Cliente.NomeCliente).ToArray();
+                var vendedor = q.Select(p => p.Funcionario.NomeFuncionario).ToArray();
+                var prod = q.Select(p => p.Produtos.NomeProduto).ToArray();
+
+                
+
+                var alturaDetalhesItens = 160;
+                for (int i = 0; i < q.Count(); i++)
+                {
+                    //IMPLEMENTAR <== DADOS DO BANCO DE DADOS
+                    //exemplo:
+                    textFormatter.DrawString($"{data[i]}", fonteDetalhesDescricao, corFonte, new PdfSharpCore.Drawing.XRect(80, alturaDetalhesItens, page.Width, page.Height));
+                    textFormatter.DrawString($"{cliente[i]}", fonteDetalhesDescricao, corFonte, new PdfSharpCore.Drawing.XRect(220, alturaDetalhesItens, page.Width, page.Height));
+                    textFormatter.DrawString($"{vendedor[i]}", fonteDetalhesDescricao, corFonte, new PdfSharpCore.Drawing.XRect(300, alturaDetalhesItens, page.Width, page.Height));
+                    textFormatter.DrawString($"{prod[i]}", fonteDetalhesDescricao, corFonte, new PdfSharpCore.Drawing.XRect(380, alturaDetalhesItens, page.Width, page.Height));
+
+
+                    alturaDetalhesItens += 20;
+                }
+                //PRINCIPLA ATÉ AQUI.
+
+
+                //Número da Página
+                var qtdPaginas = doc.PageCount;
+                textFormatter.DrawString(qtdPaginas.ToString(), new PdfSharpCore.Drawing.XFont("Arial", 10), corFonte, new PdfSharpCore.Drawing.XRect(575, 825, page.Width, page.Height));
+
+                // <== DADOS DO PDF ATÉ AQUI.
+
+
+
+
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    var contantType = "application/pdf";
+                    doc.Save(stream, false);
+
+                    var nomeArquivo = "RelatorioMafim.pdf";
+
+                    return File(stream.ToArray(), contantType, nomeArquivo);
+                }
+            }
+        }
+
+
     }
 }
