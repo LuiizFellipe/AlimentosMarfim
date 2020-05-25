@@ -2232,7 +2232,8 @@ C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMa
 C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\bin\Debug\netcoreapp3.1\SixLabors.ImageSharp.dll
 C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\bin\Debug\netcoreapp3.1\de\PdfSharpCore.resources.dll
 C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\obj\Debug\netcoreapp3.1\AlimentosMarfim.csprojAssemblyReference.cache
+C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\obj\Debug\netcoreapp3.1\AlimentosMarfim.genruntimeconfig.cache
+C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.AutoHistory.dll
+C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\obj\Debug\netcoreapp3.1\AlimentosMarfim.csproj.CoreCompileInputs.cache
 C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\obj\Debug\netcoreapp3.1\AlimentosMarfim.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\obj\Debug\netcoreapp3.1\AlimentosMarfim.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\obj\Debug\netcoreapp3.1\AlimentosMarfim.csproj.CoreCompileInputs.cache
-C:\Users\andre\Documents\ProgramasUniBrasil\3SM-ES\ProjetoDefinitivo\AlimentosMarfim4.0\Trabalho-Bonilha\AlimentosMarfim\obj\Debug\netcoreapp3.1\AlimentosMarfim.genruntimeconfig.cache

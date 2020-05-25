@@ -59,6 +59,7 @@ namespace AlimentosMarfim.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(produto);
+                _context.EnsureAutoHistory();
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -98,6 +99,7 @@ namespace AlimentosMarfim.Controllers
                 try
                 {
                     _context.Update(produto);
+                    _context.EnsureAutoHistory();
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -141,6 +143,7 @@ namespace AlimentosMarfim.Controllers
         {
             var produto = await _context.Produtos.FindAsync(id);
             _context.Produtos.Remove(produto);
+            _context.EnsureAutoHistory();
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

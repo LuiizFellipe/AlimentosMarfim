@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace AlimentosMarfim.AppDbContext
 {
     public class Context : DbContext
@@ -19,6 +20,12 @@ namespace AlimentosMarfim.AppDbContext
         public DbSet<Pedido> Pedidos { get; set; }
 
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // enable auto history functionality.
+            modelBuilder.EnableAutoHistory(2048);
+        }
+
         // sobrescrevendo método do DbContext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,5 +33,7 @@ namespace AlimentosMarfim.AppDbContext
             optionsBuilder.UseMySql(connectionString: @"server=192.99.253.245;port=3306;database=DbAlimentos;uid=time;password=unibrasil2019;");
 
         }
+
+        
     }
 }
